@@ -1,4 +1,4 @@
-package java09_java_stream.lesson01_stream_builder;
+package java09_java_stream.lesson02_stream_builder;
 
 import org.junit.jupiter.api.Test;
 
