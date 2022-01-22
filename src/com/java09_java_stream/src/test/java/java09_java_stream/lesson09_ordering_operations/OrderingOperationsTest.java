@@ -12,7 +12,7 @@ import java.util.List;
  * - Secara default, data akan diurutkan mengikuti Comparable yang terdapat di data yang ada di Stream
  * - Jika kita ingin mengurutkan secara manual, kita bisa menggunakan Comparator sendiri
  *
- * Method Retrieving Single Element
+ * Method Ordering Operations
  *
  * |----------------------------------------------------------------|
  * | Method             | Keterangan                                |
