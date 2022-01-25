@@ -3,6 +3,7 @@ package java12_date_time.lesson08_zoneid_zoneoffset;
 import org.junit.jupiter.api.Test;
 
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.Set;
 
 /**
@@ -45,5 +46,12 @@ public class ZoneIdZoneOffsetTest {
      */
     @Test
     void testZoneOffset() {
+        ZoneOffset zoneOffset1 = ZoneOffset.of("+07:00");
+        ZoneOffset zoneOffset2 = ZoneOffset.ofHours(7);
+        ZoneOffset zoneOffset3 = ZoneOffset.ofHoursMinutes(7, 30);
+
+        System.out.println(zoneOffset1);
+        System.out.println(zoneOffset2);
+        System.out.println(zoneOffset3);
     }
 }
