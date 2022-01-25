@@ -2,12 +2,10 @@ package java12_date_time.lesson03_timezone;
 
 import org.junit.jupiter.api.Test;
 
-import java.sql.Time;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
-import java.util.function.Consumer;
 
 /**
  * TimeZone
@@ -18,16 +16,6 @@ import java.util.function.Consumer;
  * - Untuk mengetahui default time zone, kita bisa gunakan method TimeZone.getDefault()
  * - Sedangkan jika ingin membuat object TimeZone, kita bisa gunakan method TimeZone.getTimeZone(“Zone ID”)
  * - Untuk mengetahui semua zone id yang didukung oleh Java, kita bisa gunakan TimeZone.getAvailableIDs()
- *
- * TimeZone di Date
- *
- * - Class Date tidak memiliki method apapun untuk mendapatkan time zone atau mengubah time zone
- * - Secara default, saat kita membuat object Date, object tersebut akan menggunakan time zone default
- *
- * TimeZone di Calendar
- *
- * - Berbeda dengan Date, di Calendar, informasi TimeZone yang bisa kita ubah
- * - Untuk mengubah time zone di Calendar, kita bisa menggunakan method setTimeZone()
  */
 public class TimezoneTest {
 
@@ -43,6 +31,12 @@ public class TimezoneTest {
         Arrays.asList(availableIds).forEach(System.out::println);
     }
 
+    /**
+     * TimeZone di Date
+     *
+     * - Class Date tidak memiliki method apapun untuk mendapatkan time zone atau mengubah time zone
+     * - Secara default, saat kita membuat object Date, object tersebut akan menggunakan time zone default
+     */
     @Test
     void testDateTimeZone() {
         Date date = new Date();
@@ -50,6 +44,12 @@ public class TimezoneTest {
         System.out.println(date.toGMTString());
     }
 
+    /**
+     * TimeZone di Calendar
+     *
+     * - Berbeda dengan Date, di Calendar, informasi TimeZone yang bisa kita ubah
+     * - Untuk mengubah time zone di Calendar, kita bisa menggunakan method setTimeZone()
+     */
     @Test
     void testCalendarTimeZone() {
         Calendar calendarJKT = Calendar.getInstance(); // default timezone = Asia/Jakarta

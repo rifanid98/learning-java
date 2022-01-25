@@ -14,12 +14,6 @@ import java.util.Date;
  * - Untuk itu, kita butuh menggunakan class Calendar untuk memanipulasi tanggal dan waktu
  * - Class Calendar tidak memiliki public constructor, sehingga untuk membuat object Calendar, kita akan menggunakan
  *   static method milik calendar bernama getInstance()
- *
- * Manipulasi Tanggal dan Waktu
- *
- * - Salah satu fitur yang terdapat di Calendar adalah, kita bisa melakukan manipulasi tanggal dan waktu di object
- *   Calendar menggunakan method set(type, value)
- * - Dan untuk mengambil value tanggal atau waktu, kita bisa menggunakan method get(type)
  */
 public class CalendarTest {
 
@@ -30,6 +24,13 @@ public class CalendarTest {
         System.out.println(date);
     }
 
+    /**
+     * Manipulasi Tanggal dan Waktu
+     *
+     * - Salah satu fitur yang terdapat di Calendar adalah, kita bisa melakukan manipulasi tanggal dan waktu di object
+     *   Calendar menggunakan method set(type, value)
+     * - Dan untuk mengambil value tanggal atau waktu, kita bisa menggunakan method get(type)
+     */
     @Test
     void testModifyCalendar() {
         Calendar calendar = Calendar.getInstance();
