@@ -1,0 +1,10 @@
+<configuration>
+    <logger name="java16_logging" level="trace" />
+    <root level="debug">
+        <appender class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            </encoder>
+        </appender>
+    </root>
+</configuration>
