@@ -40,6 +40,62 @@ public class ValueExtractionTest {
             System.out.println(violation.getPropertyPath());
             System.out.println("=================");
         }
+    }
 
+    /**
+     * Multiple Generic Parameter Type
+     *
+     * - Secara default, saat kita membuat Value Extractor, annotation @ExtractedValue hanya bisa digunakan satu kali
+     * - Oleh karena itu, jika kita membuat container class generic yang menggunakan lebih dari satu generic parameter
+     *   type, maka kita harus membuat Value Extractor nya sebanyak jumlah generic parameter type nya
+     */
+    @Test
+    void multipleGenericParameterType() {
+        ValidatorFactory validatorFactory = Validation.byDefaultProvider()
+                .configure()
+                .addValueExtractor(new EntryValueExtractorKey())
+                .addValueExtractor(new EntryValueExtractorValue())
+                .buildValidatorFactory();
+        Validator validator = validatorFactory.getValidator();
+
+        SampleEntry sampleEntry = new SampleEntry();
+        sampleEntry.setEntry(new Entry<>());
+
+        Set<ConstraintViolation<SampleEntry>> violations = validator.validate(sampleEntry);
+
+        for (ConstraintViolation<SampleEntry> violation : violations) {
+            System.out.println(violation.getMessage());
+            System.out.println(violation.getPropertyPath());
+            System.out.println("=================");
+        }
+    }
+
+    /**
+     * Container Non Generic
+     *
+     * - Rata-rata, biasanya data container itu adalah class generic, namun beberapa kasus mungkin ada juga container
+     *   yang bukan tipe generic
+     * - Bagaimana untuk menangani hal ini? Untuk menangani hal ini, kita tetap bisa menggunakan @ExtractedValue, namun
+     *   kita perlu memberi tahu tipe data nilai dari container nya
+     */
+    @Test
+    void containerNonGeneric() {
+        ValidatorFactory validatorFactory = Validation.byDefaultProvider()
+                .configure()
+                .addValueExtractor(new DataIntegerValueExtractor())
+                .buildValidatorFactory();
+        Validator validator = validatorFactory.getValidator();
+
+        SampleDataInteger sampleDataInteger = new SampleDataInteger();
+        sampleDataInteger.setData(new DataInteger());
+        sampleDataInteger.getData().setData(1);
+
+        Set<ConstraintViolation<SampleDataInteger>> violations = validator.validate(sampleDataInteger);
+
+        for (ConstraintViolation<SampleDataInteger> violation : violations) {
+            System.out.println(violation.getMessage());
+            System.out.println(violation.getPropertyPath());
+            System.out.println("=================");
+        }
     }
 }
