@@ -1,8 +1,8 @@
 package java16_logging.lesson01_logger;
 
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.logging.Logger;
-import org.junit.platform.commons.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Logger
@@ -24,7 +24,7 @@ public class LoggerTest {
     @Test
     void logger() {
         Logger log = LoggerFactory.getLogger(LoggerTest.class);
-        log.info(() -> "Hello Log");
-        log.info(() -> "Selamat Belajar Log");
+        log.info("Hello Log");
+        log.info("Selamat Belajar Log");
     }
 }
