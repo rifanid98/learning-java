@@ -2,7 +2,7 @@ package java18_spring_dasar.lesson23_qualifier;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -18,9 +18,15 @@ public class QualifierTest {
 
     @Test
     void qualifier() {
-        ApplicationContext context = new AnnotationConfigApplicationContext(BeanConfiguration.class);
+        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(BeanConfiguration.class);
+        context.registerShutdownHook();
+        CustomerService customerService = context.getBean(CustomerService.class);
         CustomerRepository normalCustomerRepository = context.getBean("normalCustomerRepository", CustomerRepository.class);
+        CustomerRepository premiumCustomerRepository = context.getBean("premiumCustomerRepository", CustomerRepository.class);
 
         Assertions.assertNotNull(normalCustomerRepository);
+        Assertions.assertNotNull(premiumCustomerRepository);
+        Assertions.assertSame(normalCustomerRepository, customerService.getNormalCustomerRepository());
+        Assertions.assertSame(premiumCustomerRepository, customerService.getPremiumCustomerRepository());
     }
 }
